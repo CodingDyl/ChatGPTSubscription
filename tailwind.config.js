@@ -17,6 +17,10 @@ export const theme = {
     screens: {
       xs: "450px",
     },
+    backgroundImage: {
+      "bg-pattern": "url('/src/assets/whatsapp-bg.jpg')",
+      "service-pattern": "url('/src/assets/service.jpg')"
+    },
   },
 };
 export const plugins = [];
