@@ -15,6 +15,11 @@ import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 
+import { motion } from 'framer-motion';
+import { textVariant } from '../../utils/motion';
+import { styles } from '../../styles';
+import { SectionWrapper } from '../../hoc';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -68,10 +73,22 @@ const tiers = [
   },
 ];
 
-function PricingContent() {
+function Pricing() {
   return (
     <>
-      <Container maxWidth="md" component="main" className="h-screen items-center flex flex-col justtify-center">
+      <motion.div variants={textVariant()}>
+        <p className={styles.sectionSubText}>Pricing.</p>
+        <h2 className={styles.sectionHeadText}>Want to get started ?</h2>
+      </motion.div>
+
+      <motion.p
+        className='mt-4 text-white text-[17px] max-w-3xl leading-[30px] mb-10'
+      >
+        At our WhatsApp ChatGPT service, we offer different packages to meet the varying needs of our customers. At each level, we aim to provide our customers with a high-quality, reliable service that meets their specific needs and helps them to achieve their goals.
+      </motion.p>
+
+
+      <Container maxWidth="md" component="main" className="h-auto items-center flex flex-col justtify-center">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -136,6 +153,4 @@ function PricingContent() {
   );
 }
 
-export default function Pricing() {
-  return <PricingContent />;
-}
+export default SectionWrapper(Pricing, "services");
