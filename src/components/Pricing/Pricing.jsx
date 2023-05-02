@@ -140,7 +140,7 @@ function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#111B21', color: '#00B700'}}>
+                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#111B21', color: '#00B700', '&:hover': {backgroundColor: 'transparent', border: '2px solid #111B21' }}}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
