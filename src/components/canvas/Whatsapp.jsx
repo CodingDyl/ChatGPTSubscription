@@ -13,8 +13,8 @@ const Whatsapp = ({ isMobile }) => {
       <spotLight position={[-20, 50, 10]} angle={0.12} penumbra={1} intensity={4} castShadow shadow-mapSize={1024}/>
       <primitive
         object={whatsapp.scene}
-        scale={isMobile ? 2.25 : 1.25}
-        position={isMobile ? [0, -10, 0] : [0, -2.25, 0]}
+        scale={isMobile ? 1.25 : 1.25}
+        position={isMobile ? [0, -2, 0] : [0, -2.25, 0]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
