@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { Divider } from '@mantine/core';
 import { phone } from '../assets';
+import WhatsappCanvas from "./canvas/Whatsapp";
 
 
 function Home() {
@@ -21,8 +22,8 @@ function Home() {
             Trused Whatsapp GPT bot. Here for all your needs and questions.
           </p>
         </div>
-        <img src={phone} alt="phone" />
       </div>
+      <WhatsappCanvas />
     </section>
   );
 }
