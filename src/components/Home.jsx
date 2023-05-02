@@ -19,7 +19,7 @@ function Home() {
           </h1>
           <Divider my="sm" className="w-[35%] my-5" />
           <p className={`${styles.heroSubText} mt-4 text-white-100 flex-wrap w-[100%]`}>
-            Trused Whatsapp GPT bot. Here for all your needs and questions.
+          ChatGPT on WhatsApp: Your personal assistant in your pocket.
           </p>
         </div>
       </div>

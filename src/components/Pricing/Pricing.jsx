@@ -77,8 +77,8 @@ function Pricing() {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Pricing.</p>
-        <h2 className={styles.sectionHeadText}>Want to get started ?</h2>
+        <p className={styles.sectionSubText}>Want to get started?</p>
+        <h2 className={styles.sectionHeadText}>Pricing.</h2>
       </motion.div>
 
       <motion.p
