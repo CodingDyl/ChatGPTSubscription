@@ -35,13 +35,13 @@ const Footer = () => {
       <Container className={classes.inner}>
         <img src={logo} alt="logo" className="h-[30px] w-[30px]" />
         <Group spacing={0} className={classes.links} position="right" noWrap>
-          <ActionIcon size="lg">
+          <ActionIcon size="lg" className="hover:text-secondary">
             <IconBrandTwitter size="1.05rem" stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size="lg">
+          <ActionIcon size="lg" className="hover:text-secondary">
             <IconBrandYoutube size="1.05rem" stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size="lg">
+          <ActionIcon size="lg" className="hover:text-secondary">
             <IconBrandInstagram size="1.05rem" stroke={1.5} />
           </ActionIcon>
         </Group>
