@@ -15,7 +15,7 @@ function Home() {
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Welcome to <br />{" "}
-            <span className="text-secondary">W-GPT</span>
+            <span className="text-secondary">WhatsApp-GPT</span>
           </h1>
           <Divider my="sm" className="w-[35%] my-5" />
           <p className={`${styles.heroSubText} mt-4 text-white-100 flex-wrap w-[100%]`}>

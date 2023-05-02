@@ -15,7 +15,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2" onClick={() => { setActive(""); window.scrollTo(0, 0); }}>
           <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Whatsapp-GPT &nbsp; 
+            WhatsApp-GPT &nbsp; 
             <span className="sm:block hidden">| GPT on the Go</span>
           </p>
         </Link>
