@@ -62,16 +62,6 @@ function LoginModal({opened, close}) {
             </div>
 
             <TextInput
-                label="Phone"
-                placeholder="Your phone number"
-                value={form.values.phone}
-                onChange={(event) => form.setFieldValue('phone', event.currentTarget.value)}
-                radius="md"
-            />
-            </>
-          )}      
-
-          <TextInput
             required
             label="Email"
             placeholder="hello@chat.gpt"
@@ -80,6 +70,17 @@ function LoginModal({opened, close}) {
             error={form.errors.email && 'Invalid email'}
             radius="md"
           />
+            </>
+          )}      
+
+            <TextInput
+                required
+                label="Phone"
+                placeholder="Your phone number"
+                value={form.values.phone}
+                onChange={(event) => form.setFieldValue('phone', event.currentTarget.value)}
+                radius="md"
+            />
 
           <PasswordInput
             required
