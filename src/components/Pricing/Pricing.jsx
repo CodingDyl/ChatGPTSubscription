@@ -16,7 +16,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 
 import { motion } from 'framer-motion';
-import { textVariant } from '../../utils/motion';
+import { fadeIn, textVariant } from '../../utils/motion';
 import { styles } from '../../styles';
 import { SectionWrapper } from '../../hoc';
 import { Tilt } from 'react-tilt';
@@ -84,6 +84,7 @@ function Pricing() {
       </motion.div>
 
       <motion.p
+        variants={fadeIn("left", "spring", 0.5, 0.75)}
         className='mt-4 text-white text-[17px] max-w-3xl leading-[30px] mb-10'
       >
         At our WhatsApp ChatGPT service, we offer different packages to meet the varying needs of our customers. At each level, we aim to provide our customers with a high-quality, reliable service that meets their specific needs and helps them to achieve their goals.
@@ -92,7 +93,7 @@ function Pricing() {
 
       <Container maxWidth="md" component="main" className="h-auto items-center flex flex-col justtify-center">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+          {tiers.map((tier, index) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
               item
@@ -102,7 +103,11 @@ function Pricing() {
               md={4}
             >
               <Tilt >
-              <Card style={{backgroundColor: "#090325", color: "white", }} className=" border-2 border-secondary">
+              <motion.div
+                variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+                className='w-full green-pink-gradient p-[2px] rounded-[5px] shadow-card'
+              >
+              <Card style={{backgroundColor: "#090325", color: "white", }}>
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
@@ -110,8 +115,9 @@ function Pricing() {
                   action={tier.title === 'Pro' ? <StarIcon /> : null}
                   subheaderTypographyProps={{
                     align: 'center',
+                    color: '#00B700'
                   }}
-                  className="bg-secondary text-white"
+                  className="bg-black-200 text-white border-b-2 border-secondary"
                 />
                 <CardContent>
                   <Box
@@ -148,6 +154,7 @@ function Pricing() {
                   </Button>
                 </CardActions>
               </Card>
+              </motion.div>
               </Tilt>
             </Grid>
           ))}

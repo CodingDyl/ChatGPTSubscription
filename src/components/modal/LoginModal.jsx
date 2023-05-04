@@ -33,7 +33,7 @@ function LoginModal({opened, close}) {
     },
   });
   return (
-    <Modal opened={opened} onClose={close} title="Authentication" styles={{ body: {backgroundColor: '#111B21'}, header: {backgroundColor: '#111B21', color: '#00B700'}, close: {color: '#00B700', '&:hover': {background: '#00B700', color: '#090325'}}, overlay: {backdropFilter: 'blur(5px)'}}} >
+    <Modal opened={opened} onClose={close} title="Authentication" styles={{ body: {backgroundColor: '#090325'}, header: {backgroundColor: '#090325', color: '#00B700'}, close: {color: '#00B700', '&:hover': {background: '#00B700', color: '#090325'}}, overlay: {backdropFilter: 'blur(5px)'}}} >
     <Paper radius="md" p="xl" withBorder >
       <Text size="lg" weight={500} mb={15} fw={700}>
         Welcome to WhatsAppGpt
