@@ -19,6 +19,8 @@ import { motion } from 'framer-motion';
 import { textVariant } from '../../utils/motion';
 import { styles } from '../../styles';
 import { SectionWrapper } from '../../hoc';
+import { Tilt } from 'react-tilt';
+import { root } from 'postcss';
 
 function Copyright(props) {
   return (
@@ -99,7 +101,8 @@ function Pricing() {
               sm={tier.title === 'Enterprise' ? 12 : 6}
               md={4}
             >
-              <Card className="bg-tertiary text-white">
+              <Tilt >
+              <Card style={{backgroundColor: "#090325", color: "white", }} className=" border-2 border-secondary">
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
@@ -119,10 +122,10 @@ function Pricing() {
                       mb: 2,
                     }}
                   >
-                    <Typography component="h2" variant="h3" color="text.primary">
+                    <Typography component="h2" variant="h3" color="#00B700 !important">
                       ${tier.price}
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography variant="h6" color="#00B700">
                       /mo
                     </Typography>
                   </Box>
@@ -140,11 +143,12 @@ function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#111B21', color: '#00B700', '&:hover': {backgroundColor: 'transparent', border: '2px solid #111B21' }}}>
+                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#00B700', color: '#f3f3f3', border: 'none', '&:hover': {backgroundColor: 'transparent', color: "white", border: '2px solid #00B700' }}}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
               </Card>
+              </Tilt>
             </Grid>
           ))}
         </Grid>
