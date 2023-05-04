@@ -21,6 +21,7 @@ import { styles } from '../../styles';
 import { SectionWrapper } from '../../hoc';
 import { Tilt } from 'react-tilt';
 import { root } from 'postcss';
+import LoginModal from '../modal/LoginModal';
 
 function Copyright(props) {
   return (
@@ -40,9 +41,9 @@ const tiers = [
     title: 'Free',
     price: '0',
     description: [
-      '10 messages per day',
+      '5 messages per day',
       '1 voice note per day',
-      'Help center access',
+      'No Help center access',
       'Email support',
     ],
     buttonText: 'Sign up for free',
@@ -58,24 +59,76 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    buttonText: 'Get started',
+    buttonText: 'Subscribe',
     buttonVariant: 'contained',
   },
   {
     title: 'Enterprise',
-    price: '30',
+    price: '15',
     description: [
       'Unlimited messages',
       'Unlimited voice notes',
       'Help center access',
       'Phone & email support',
     ],
-    buttonText: 'Contact us',
+    buttonText: 'Subscribe',
+    buttonVariant: 'outlined',
+  },
+];
+
+const tops = [
+
+  {
+    title: 'Top-Up 50',
+    price: '5',
+    description: [
+      '5 messages per day',
+      '1 voice note per day',
+      'No Help center access',
+      'Email support',
+    ],
+    buttonText: 'Sign up for free',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: 'Pro',
+    subheader: 'Most popular',
+    price: '7',
+    description: [
+      '150 Messages per day',
+      '10 voice notes per day',
+      'Help center access',
+      'Priority email support',
+    ],
+    buttonText: 'Subscribe',
+    buttonVariant: 'contained',
+  },
+  {
+    title: 'Enterprise',
+    price: '15',
+    description: [
+      'Unlimited messages',
+      'Unlimited voice notes',
+      'Help center access',
+      'Phone & email support',
+    ],
+    buttonText: 'Subscribe',
     buttonVariant: 'outlined',
   },
 ];
 
 function Pricing() {
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleSignUp = () => {
+    setOpen(true);
+  }
+
+  const handleSubscription = () => {
+    console.log("Subscribed");
+  }
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -149,7 +202,7 @@ function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#00B700', color: '#f3f3f3', border: 'none', '&:hover': {backgroundColor: 'transparent', color: "white", border: '2px solid #00B700' }}}>
+                  <Button fullWidth variant={tier.buttonVariant} sx={{backgroundColor: '#00B700', color: '#f3f3f3', border: 'none', '&:hover': {backgroundColor: 'transparent', color: "white", border: '2px solid #00B700' }}} onClick={tier.buttonText === "Subscribe" ? handleSubscription : handleSignUp}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
@@ -160,6 +213,7 @@ function Pricing() {
           ))}
         </Grid>
       </Container>
+      <LoginModal opened={open} close={() => setOpen(false)} />
     </>
   );
 }
