@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "*.js",
+        "source": "**/*.@(js|jsx)",
         "headers": [
           {
             "key": "Content-Type",
