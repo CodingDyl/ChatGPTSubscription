@@ -79,10 +79,11 @@ function LoginModal({ opened, close }) {
                 })
                 .catch((error) => {
                   setOpenFailed(true);
-                  setMessage("There seems to be an issue with our servers, please try again later!")// handle error
+                  setMessage("There seems to be an issue with our servers, please try again later!");// handle error
                 });
             } else {
-              console.log("trying to login")// handle login form submission
+              setOpenFailed(true);
+              setMessage("There seems to be an issue with our servers, please try again later!");// handle login form submission
             }
           }}
         >
