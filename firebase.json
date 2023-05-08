@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "whatsappgpt-f9e8d",
     "public": "dist",
     "ignore": [
       "firebase.json",
