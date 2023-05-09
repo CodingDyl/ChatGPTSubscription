@@ -16,6 +16,7 @@
     "@mantine/core": "^6.0.10",
     "@mantine/ds": "^6.0.10",
     "@mantine/form": "^6.0.10",
+    "@mantine/hooks": "^6.0.10",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "@react-three/drei": "^9.66.0",

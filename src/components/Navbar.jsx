@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mantine/core';
-
 import { styles } from '../styles';
 import { navLinks } from '../constants';
 import { logo, menu, close } from '../assets';
 import LoginModal from './modal/LoginModal';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 
 
 const Navbar = () => {
@@ -13,12 +15,22 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleLogin = () => {
     setOpen(!open);
+    setAnchorEl(null);
 
     //set login
     
+  };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -41,7 +53,7 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-              <button onClick={handleLogin}>
+              <button onClick={loggedIn ? handleMenuOpen : handleLogin}>
                 {loggedIn ? <Avatar radius="xl" color='green'/> : <a href="#" className="text-secondary hover:text-white text-[18px] font-medium cursor-pointer">Login</a> }
               </button>
           </li>
@@ -69,6 +81,16 @@ const Navbar = () => {
       </div>
     </nav>
     <LoginModal opened={open} close={() => setOpen(false)} logged={setLoggedIn}/>
+    <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Subscription</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      </Menu>
     </>
   )
 }
