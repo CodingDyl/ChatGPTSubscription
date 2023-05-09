@@ -18,6 +18,7 @@ const Navbar = () => {
     setOpen(!open);
 
     //set login
+    
   };
 
   return (
@@ -67,7 +68,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-    <LoginModal opened={open} close={() => setOpen(false)} />
+    <LoginModal opened={open} close={() => setOpen(false)} logged={setLoggedIn}/>
     </>
   )
 }

@@ -21,7 +21,7 @@ import { signIn, signUpWithEmailAndPassword } from "../../../client.js";
 import SuccessfulLoginDialog from "../dialogs/SuccessfulLoginDialog";
 import FailedLoginDialog from "../dialogs/FailedLoginDialog";
 
-function LoginModal({ opened, close }) {
+function LoginModal({ opened, close, logged }) {
   const [type, toggle] = useToggle(["login", "register"]);
   const [openSuccess, setOpenSuccess] = React.useState(false);
   const [openFailed, setOpenFailed] = React.useState(false);
@@ -45,7 +45,7 @@ function LoginModal({ opened, close }) {
           : null,
     },
   });
-  
+
   return (
     <>
       <Modal
@@ -94,6 +94,7 @@ function LoginModal({ opened, close }) {
                   .then(() => {
                     setOpenSuccess(true);
                     setUser(`${name} ${lastName}`);
+                    logged(true);
                     close();
                   })
                   .catch((error) => {
