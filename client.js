@@ -58,3 +58,12 @@ export const signIn = async ({email, password}) => {
     }
 }
 
+export const logout = async () => {
+  try {
+    await auth.signOut();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+

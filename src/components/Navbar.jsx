@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mantine/core';
 import { styles } from '../styles';
 import { navLinks } from '../constants';
 import { logo, menu, close } from '../assets';
 import LoginModal from './modal/LoginModal';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import LogoutDialog from './dialogs/LogoutDialog';
+import { logout } from '../../client';
+import AccountMenu from '../components/menu/AccountMenu';
+import { Menu, Group, Text } from '@mantine/core';
+import {
+  IconLogout,
+  IconSettings,
+  IconPlayerPause,
+  IconTrash,
+  IconSwitchHorizontal,
+  IconChevronRight,
+  IconDots,
+} from '@tabler/icons-react';
 
 
 
@@ -16,6 +27,10 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openLogout, setOpenLogout] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const menuButtonRef = useRef();
 
   const handleLogin = () => {
     setOpen(!open);
@@ -26,12 +41,27 @@ const Navbar = () => {
   };
 
   const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+    // setAnchorEl(event.currentTarget);
+    setOpenMenu(true);
   };
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
+    setOpenMenu(false);
   };
+
+  const handleLogoutDialog = () => {
+    setOpenLogout(true);
+  };
+
+  const handleLogoutDialogClose = () => {
+    setOpenLogout(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setOpenLogout(false);
+    handleMenuClose();
+  }
 
   return (
     <>
@@ -53,7 +83,7 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-              <button onClick={loggedIn ? handleMenuOpen : handleLogin}>
+              <button onClick={loggedIn ? handleMenuOpen : handleLogin} ref={menuButtonRef}>
                 {loggedIn ? <Avatar radius="xl" color='green'/> : <a href="#" className="text-secondary hover:text-white text-[18px] font-medium cursor-pointer">Login</a> }
               </button>
           </li>
@@ -81,16 +111,59 @@ const Navbar = () => {
       </div>
     </nav>
     <LoginModal opened={open} close={() => setOpen(false)} logged={setLoggedIn}/>
-    <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleMenuClose}
+    <Group position="center">
+      <Menu
+        withArrow
+        width={300}
+        position={'bottom'}
+        opened={openMenu}
+        onClose={() => setOpenMenu(false)}
+        control={elementRef => {
+          if (elementRef) {
+            elementRef.current = menuButtonRef.current;
+          }
+        }}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Subscription</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+        <Menu.Dropdown>
+          <Menu.Item rightSection={<IconChevronRight size="0.9rem" stroke={1.5} />}>
+            <Group>
+              <Avatar
+                radius="xl"
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
+              />
+
+              <div>
+                <Text weight={500}>Dylan Petzer</Text>
+                <Text size="xs" color="dimmed">
+                  2610dylan@gmail.com
+                </Text>
+              </div>
+            </Group>
+          </Menu.Item>
+
+          <Menu.Divider />
+
+          <Menu.Label>Settings</Menu.Label>
+          <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>Account settings</Menu.Item>
+          <Menu.Item icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}>
+            Change account
+          </Menu.Item>
+          <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>Logout</Menu.Item>
+
+          <Menu.Divider />
+
+          <Menu.Label>Danger zone</Menu.Label>
+          <Menu.Item icon={<IconPlayerPause size="0.9rem" stroke={1.5} />}>
+            Pause subscription
+          </Menu.Item>
+          <Menu.Item color="red" icon={<IconTrash size="0.9rem" stroke={1.5} />}>
+            Delete account
+          </Menu.Item>
+        </Menu.Dropdown>
       </Menu>
+    </Group>
+      <LogoutDialog open={openLogout} handleClose={handleLogoutDialogClose} logout={handleLogout} setLogged={setLoggedIn}/>
+      
     </>
   )
 }
