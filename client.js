@@ -9,7 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABqLy2LFmjUdNlxDPnfDJX3HBV8UE2Xgo",
+  apiKey: "API_KEY_HERE(Dont expose api publically)",
   authDomain: "whatsappgpt-f9e8d.firebaseapp.com",
   databaseURL: "https://whatsappgpt-f9e8d-default-rtdb.firebaseio.com",
   projectId: "whatsappgpt-f9e8d",
